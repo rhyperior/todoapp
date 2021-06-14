@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Active Tasks{% endblock title %}
+{% block body %}
+    
+
+
+  <div class="container">
+    <form action='/' method='POST' >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Enter Task Name</label>
+        <input type="text" class="form-control" name="taskname" id="taskname">
+        <!-- <div id="emailHelp" class="form-text">Enter the Full Name of the Task.</div> -->
+      </div>
+      <div class="mb-3">
+        <label for="inputDescription" class="form-label">Description</label>
+        <input type="text" class="form-control" name="description" id="description">
+      </div>
+      <div class="mb-3">
+        <label for="InputPriority" class="form-label">Priority</label>
+        <input type="text" class="form-control" name="priority" id="priority">
+      </div>
+      <button type="submit" class="btn btn-primary btn-dark">Submit</button>
+    </form>
+
+    <div class="title-ribbon">
+      <p style="text-indent:350px ; font-family: Bookman, sans-serif; font-size:2.4em; font-weight: bold;">
+        <span id="heading-text1" style="color:#0099FF; ">Active</span>
+        <span id="heading-text2" style="color:black; "> Tasks</span>
+      </p>
+
+    </div>
+
+    <table class="table">
+      
+      <tbody>
+         {% if alltodo|length == 0 %}
+            <p style="font-family: 'Times New Roman', Times, sans-serif; font-size:1.2em; font-weight: normal;">
+              #No Tasks Currently.
+            </p>
+            <div class="alert alert-dark" role="alert">
+              Add your First TODO now.
+            </div>
+            {% else %}
+            <thead>
+              <tr>
+                <th scope="col">sno</th>
+                <th scope="col">task_name</th>
+                <th scope="col">description</th>
+                <th scope="col">Date_Added</th>
+                <th scope="col">priority</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+         {% endif %}
+            
+        
+        {% for todo in alltodo %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{todo.task_name}}</td>
+          <td>{{todo.description}}</td>
+          <td>{{todo.addition_Date}}</td>
+          <td>{{todo.priority}}</td>
+          <td>
+            <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-primary btn-sm mx-1">Update</button>
+            <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button></td>
+        </tr>
+        {% endfor %}
+
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <script crossorigin="anonymous" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!--    <script src="jquery/jquery.js"></script>-->
+  <!--    <script type="text/javascript" src='js/bootstrap.min.js'></script>-->
+  <!--    <link rel="stylesheet" href="css/bootstrap.css" />-->
+  <!--      <script src="js/scripts.js"></script>-->
+
+  {% endblock body %}
