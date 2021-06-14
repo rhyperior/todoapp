@@ -1,3 +1,5 @@
 #Ignore the .idea folder and .vscode folder that are there for VSCODE workspace settings.
 /.idea
 /.vscode
+#Ignonre the __pycache folder
+/.__pycache__
