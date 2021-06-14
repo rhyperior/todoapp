@@ -2,4 +2,4 @@
 /.idea
 /.vscode
 #Ignonre the __pycache folder
-/.__pycache__
+__pycache__/
